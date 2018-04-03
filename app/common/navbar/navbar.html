@@ -1,0 +1,24 @@
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <div class="row">
+            <div class="col m10 offset-m1">
+                <a href="#/{{user.username}}" class="name nav-link hide-on-med-and-down">Dimitar Stefanov</a>
+                <a href="#/{{user.username}}" class="name nav-link-mobile hide-on-bigscreen">Dimitar Stefanov</a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons"
+                                                                                    style="color: #000;">menu</i></a>
+                <div class="right hide-on-med-and-down">
+                    <a class="nav-link" href="#/{{user.username}}/about">About</a>
+                    <a class="nav-link" href="#/{{user.username}}/portfolio">Portfolio</a>
+                    <a class="nav-link" href="#/{{user.username}}/contact">Contact</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+</div>
+<ul class="side-nav" id="mobile-demo">
+    <li><a class="nav-link nav-link-mobile" href="#/{{user.username}}/about">About</a></li>
+    <li><a class="nav-link nav-link-mobile" href="#/{{user.username}}/portfolio">Portfolio</a></li>
+    <li><a class="nav-link nav-link-mobile" href="#/{{user.username}}/contact">Contact</a></li>
+</ul>

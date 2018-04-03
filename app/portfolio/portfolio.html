@@ -1,0 +1,28 @@
+<navbar> </navbar>
+<div class="container">
+    <div class="row">
+        <div class="heading-type center">
+            <h1>MY LATEST WORK</h1>
+            <hr class="content-divider" style="width:450px;">
+        </div>
+    </div>
+</div>
+<div ng-if="error">
+    <div class="error center padding-bot-45 padding-top-45">
+        {{error}}
+    </div>
+</div>
+<div ng-if="!error">
+    <div class="{{$index%2===0? 'odd' : 'even'}} hide-on-small-and-down"
+         ng-repeat="project in projects track by $index">
+        <div ng-if="$index%2===0">
+            <project-even project="project"></project-even>
+        </div>
+        <div ng-if="$index%2===1">
+            <project-odd project="project"></project-odd>
+        </div>
+    </div>
+    <div class="hide-on-med-and-up" ng-repeat="project in projects track by $index">
+        <project-odd project="project"></project-odd>
+    </div>
+</div>

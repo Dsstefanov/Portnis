@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-app="portfolio" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="portfolio" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="portfolio" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="portfolio" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dimitar Stefanov</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./common/images/favicon-16x16.png" />
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+
+<div ng-view ng-cloak></div>
+<div footer ></div>
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-cookies.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/materialize/dist/js/materialize.min.js"></script>
+<script src="bower_components/angular-material/angular-material.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="app.js"></script>
+<script src="./common/index.js"></script>
+<script src="./common/layout/footer-directive.js"></script>
+<script src="about/about.js"></script>
+<script src="about/directives/skill-directive.js"></script>
+<script src="portfolio/portfolio.js"></script>
+<script src="portfolio/directives/project-directive.js"></script>
+<script src="home/home.js"></script>
+<script src="about/services/getSkills-service.js"></script>
+<script src="home/directives/project-directive.js"></script>
+<script src="authorized-routes/homepage/homepage.js"></script>
+<script src="authorized-routes/personality/personality.js"></script>
+<script src="authorized-routes/personality/checkUsername-service.js"></script>
+<script src="authorized-routes/personality/updateUser-service.js"></script>
+<script src="contact/contact.js"></script>
+<script src="common/navbar/navbar-directive.js"></script>
+<script src="auth/login.js"></script>
+<script src="auth/register.js"></script>
+<script src="auth/login-directive.js"></script>
+<script src="auth/login/login-service.js"></script>
+<script src="auth/register-directive.js"></script>
+<script src="auth/isEmailUnique-service.js"></script>
+<script src="common/users/getUser-service.js"></script>
+<script src="common/users/deleteCachedUser-service.js"></script>
+<script src="common/users/authorize-service.js"></script>
+<script src="common/Constants.js"></script>
+<script src="auth/register-service.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-sanitize.min.js"></script>
+
+</body>
+</html>

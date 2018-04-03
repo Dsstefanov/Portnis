@@ -1,0 +1,20 @@
+<div class="container project-section">
+    <div class="row">
+        <div class="col m5">
+            <a href="{{project.weblink}}" target="_blank"><img class="responsive-img padding-top-45" src="../common/images/{{project.image}}" alt=""></a>
+        </div>
+        <div class="col m5 offset-m2">
+            <h1 class="bold center">{{project.title}}</h1>
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+            <p class="lead"> {{project.description}}
+            </p>
+            <span class="dev-and-func bold">Development and Functionality</span> <br>
+            <ul class="bullet">
+                <li class="bold" ng-repeat="technology in project.technologies track by $index">
+                    {{technology}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

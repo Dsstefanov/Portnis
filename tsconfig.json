@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "alwaysStrict": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "outDir": "dist-e2e"
+  },
+  "include": [
+    "e2e-tests/**/*"
+  ]
+}

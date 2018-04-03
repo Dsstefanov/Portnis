@@ -1,0 +1,41 @@
+<form id="register-form">
+    <div class="row success bold" ng-if="success">
+        <div class="center">{{success}}</div>
+    </div>
+    <div class="row relative">
+        <div class="input-field col s10 m11">
+            <i class="material-icons prefix secondary-color">email</i>
+            <input id="email" ng-model="email" type="email" name="email" class="validate" required="required">
+            <label for="email" id="email-label" data-error="required">Email</label>
+        </div>
+        <div class="col s2 m1 absolute loader-right-bottom">
+            <div class="preloader-wrapper small " id="preloader">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s10 m11">
+            <i class="material-icons prefix secondary-color">lock</i>
+            <input id="password" ng-model="password" type="password" name="password" class="validate" required>
+            <label for="password" id="password-label" data-error="required">Password</label>
+        </div>
+    </div>
+    <div class="row center">
+        <a class="waves-effect waves-light btn" id="register">REGISTER</a>
+    </div>
+    <div class="row"></div>
+    <div class="row center">
+        <a href="" id="login-btn" class="materialize-color bold">Sign in</a>
+    </div>
+</form>

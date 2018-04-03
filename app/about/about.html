@@ -1,0 +1,40 @@
+<navbar> </navbar>
+<div class="container">
+    <div class="row">
+        <div class="heading-type">
+            <h1>ABOUT</h1>
+            <hr class="content-divider">
+            <div class="col s12 m6 offset-m1 push-m5">
+                <div class="row"></div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="hide-on-large-only bold padding-bot-45 center">Tap on a bar to see more about it</div>
+                </div>
+                <div class="row">
+                    <small>The percentage represents my willingness to work with that technology and my skill at it.</small>
+                </div>
+                <div ng-repeat="skill in skills track by $index">
+                    <skill skill="skill"></skill>
+                </div>
+            </div>
+
+            <div class="col m5 pull-m7">
+                <p class="lead" ng-bind-html="aboutText"></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--TODO Export later-->
+<script>
+    $( document ).ready(setTimeout(() => {
+        let skillbars = $('.skillbar-bar');
+        for(skillbar of skillbars){
+            skillbar.style.WebkitTransition = "all 3s"; // Code for Safari 3.1 to 6.0
+            skillbar.style.transition = "all 3s";       // Standard syntax
+            $(skillbar).width(skillbar.parentNode.attributes.getNamedItem('data-percent').nodeValue)
+        }
+        $('.skillbar').tooltip({delay: 50, html: true});
+    }, 50));
+</script>

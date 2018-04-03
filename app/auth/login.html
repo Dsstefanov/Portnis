@@ -1,0 +1,26 @@
+<form id="login-form">
+    <div class="row error bold" ng-if="error">
+        <div class="center">{{error}}</div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <i class="material-icons prefix secondary-color">email</i>
+            <input id="email" ng-model="email" type="text" class="validate">
+            <label for="email">Email</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <i class="material-icons prefix secondary-color">lock</i>
+            <input id="icon_prefix" ng-model="password" type="password" class="validate">
+            <label for="icon_prefix">Password</label>
+        </div>
+    </div>
+    <div class="row center">
+        <a class="waves-effect waves-light btn" id="login-btn">CONNECT</a>
+    </div>
+    <div class="row"></div>
+    <div class="row center">
+        <a href="" id="register" class="materialize-color bold">Create account</a>
+    </div>
+</form>

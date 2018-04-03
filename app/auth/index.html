@@ -1,0 +1,22 @@
+<div class="hide-on-small-and-down">
+    <div class="padding-top-45"></div>
+    <div class="padding-top-45"></div>
+</div>
+<div class="row">
+    <div class="col m6 s12 offset-m3">
+        <div class="card">
+            <div class="card-image relative">
+                <img src="./../../../common/images/auth-logo.jpg" class="auth-logo-background">
+                <span class="card-title auth-logo absolute center">Portfolio Generator</span>
+            </div>
+            <div class="card-content">
+                <div ng-if="login">
+                    <login-form></login-form>
+                </div>
+                <div ng-if="register">
+                    <register-form></register-form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
