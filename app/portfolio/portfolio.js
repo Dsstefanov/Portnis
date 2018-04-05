@@ -27,11 +27,5 @@ angular.module('portfolio.portfolio', ['ngRoute', 'portfolio.get-user'])
                         }
                         return projects;
                     })();
-                })
-                .catch(err => {
-                    if(err.status === -1){
-                        err = `${err.config.url} is not available`;
-                    }
-                    $scope.error= err;
                 });
         }]);

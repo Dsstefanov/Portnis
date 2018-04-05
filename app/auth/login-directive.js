@@ -29,7 +29,7 @@ angular.module('portfolio.auth')
 
         return {
             restrict: 'E',
-            templateUrl: 'components/auth/login.html',
+            templateUrl: 'auth/login.html',
             link: {
                 post: function ($scope, element) {
                     registerBtn($scope, element);

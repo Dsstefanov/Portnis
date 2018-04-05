@@ -8,7 +8,7 @@ angular.module('portfolio.auth')
       function ($location, isEmailUnique, registerUser, toastService, constants) {
         "use strict";
         let loginBtn = (scope, element) => {
-          const login = element.find('#login');
+          const login = element.find('#login-btn');
           login.on('click', () => {
             window.location = '/#/login';
             scope.login = false;
@@ -82,7 +82,7 @@ angular.module('portfolio.auth')
         };
         return {
           restrict: 'E',
-          templateUrl: './components/auth/register.html',
+          templateUrl: 'auth/register.html',
           link: {
             post: function (scope, element) {
               loginBtn(scope, element);

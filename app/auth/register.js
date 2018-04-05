@@ -4,7 +4,7 @@ angular.module('portfolio.auth')
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/register', {
-            templateUrl: 'components/auth/index.html',
+            templateUrl: 'auth/index.html',
             controller: 'RegisterController'
         });
     }])

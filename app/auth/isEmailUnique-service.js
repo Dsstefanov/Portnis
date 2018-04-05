@@ -2,7 +2,8 @@ angular.module('portfolio.auth')
     .factory('isEmailUnique', [
         '$http',
         'SERVER',
-        ($http, SERVER) => {
+        'toastService',
+        ($http, SERVER, toastService) => {
             "use strict";
             return {
                 isEmailUnique: (email) => {
@@ -11,7 +12,7 @@ angular.module('portfolio.auth')
                             return data.data;
                         })
                         .catch(() => {
-                            console.log("Internal server error!");
+                          toastService.showToast('Internal Server error, please try again later');
                         });
                 }
             };

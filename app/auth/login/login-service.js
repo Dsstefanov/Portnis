@@ -3,7 +3,8 @@ angular.module('portfolio.auth')
         '$http',
         '$cookies',
         'SERVER',
-        ($http, $cookies, SERVER) => {
+        'toastService',
+        ($http, $cookies, SERVER, toastService) => {
             "use strict";
             return {
                 login: (user) => {
@@ -26,7 +27,7 @@ angular.module('portfolio.auth')
                             return data;
                         })
                         .catch(() => {
-                            console.log("Internal server error!");
+                          toastService.showToast('Internal Server error, please try again later');
                         });
                 }
             };

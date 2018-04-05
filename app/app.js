@@ -79,7 +79,6 @@ angular.module('portfolio', [
       function ($mdToast, constants) {
         return {
           showToast: function (msg, params, delay, position, button, buttonText) {
-            console.log('executed');
             $mdToast.show({
               template: '<md-toast><span>' + msg + '</span></md-toast>',
               action: 'OK',

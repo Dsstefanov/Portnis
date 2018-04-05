@@ -2,7 +2,8 @@ angular.module('portfolio.homepage.personality')
     .factory('isUsernameUnique', [
         '$http',
         'SERVER',
-        ($http, SERVER) => {
+        'toastService',
+        ($http, SERVER, toastService) => {
             "use strict";
             return {
                 isUsernameUnique: (username) => {
@@ -11,7 +12,7 @@ angular.module('portfolio.homepage.personality')
                             return data.data;
                         })
                         .catch(() => {
-                            console.log("Internal server error at checkUsername service!");
+                          toastService.showToast('Internal Server error, please try again later')
                         });
                 }
             };

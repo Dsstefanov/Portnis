@@ -2,7 +2,8 @@ angular.module('portfolio.auth')
     .factory('registerUser', [
         '$http',
         'SERVER',
-        ($http, SERVER) => {
+        'toastService',
+        ($http, SERVER, toastService) => {
             "use strict";
             return {
                 register: (data) => {
@@ -10,8 +11,8 @@ angular.module('portfolio.auth')
                         .then(data => {
                             return data.data;
                         })
-                        .catch(ex => {
-                            console.log("Internal server error at register-service!");
+                        .catch(() => {
+                          toastService.showToast('Internal Server error, please try again later');
                         });
                 }
             };

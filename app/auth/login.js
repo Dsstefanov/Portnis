@@ -4,7 +4,7 @@ angular.module('portfolio.auth', ['ngRoute', 'ngCookies', 'portfolio.authorizati
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/login', {
-            templateUrl: 'components/auth/index.html',
+            templateUrl: 'auth/index.html',
             controller: 'LoginController'
         });
     }])

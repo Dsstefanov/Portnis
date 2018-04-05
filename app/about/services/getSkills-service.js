@@ -2,7 +2,8 @@ angular.module('portfolio.about')
     .factory('getSkills', [
         '$http',
         'SERVER',
-        ($http, SERVER) => {
+        'toastService',
+        ($http, SERVER, toastService) => {
             "use strict";
             return {
                 getSkills: () => {
@@ -10,7 +11,10 @@ angular.module('portfolio.about')
                     return $http.get(`${SERVER}/users/dsstefanov/skills`)
                         .then(data => {
                             return data.data.skills;
-                        });
+                        })
+                        .catch(() => {
+                          toastService.showToast('Internal Server error, please try again later')
+                        })
                 }
             };
         }]);

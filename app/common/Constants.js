@@ -5,7 +5,7 @@ angular.module('portfolio')
         delay: 5000
       },
       TOAST_SUCCESS:{
-        position: 'top right',
+        position: 'bottom right'/*'top right'*/,
         delay: 5000
       }
 
