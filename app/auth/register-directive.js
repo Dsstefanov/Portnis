@@ -31,7 +31,7 @@ angular.module('portfolio.auth')
                   } else if (data.errors.error.code === 11000) {
                     toastService.showToast(`Email ${formData.email} is already in use`);
                   }
-
+                  else{ console.log(data)}
                 });
           });
         };

@@ -19,3 +19,10 @@ export async function waitForUrlToBe(expectedUrl?: string) {
     return expectedUrl ? expectedUrl == url : url != currentUrl;
   }, 7000, `Waiting for URL to change to ${expectedUrl} timed out`);
 }
+
+export function getSimpleUser(){
+  return {
+    email: 'pesho@gmail.com',
+    password: 'testpassword'
+  };
+}

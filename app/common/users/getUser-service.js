@@ -38,6 +38,7 @@ angular.module('portfolio.get-user', ['ngCookies'])
               deferred.resolve(cache.get('userObject'));
               return deferred.promise;
             } else {
+              console.log('tuka failva')
               return $http.get(`${SERVER}/users/id/${$cookies.get('userId')}`)
                   .then(data => {
                     cache.put('userObject', data.data);

@@ -22,8 +22,12 @@ angular.module('portfolio', [
         'use strict';
 
         $locationProvider.hashPrefix('');
+
         //in case route was not found
+        $routeProvider.when('deleteUser', ($http, SERVER) => {$http.get(`${SERVER}/users/delete`)})
         $routeProvider.otherwise({redirectTo: '/'});
+
+        $httpProvider.defaults.withCredentials = true;
 
         // $http.post middleware to work with the express server
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';

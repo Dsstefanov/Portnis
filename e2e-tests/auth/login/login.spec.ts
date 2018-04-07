@@ -3,6 +3,7 @@ import {LoginPage, RegisterPage} from './auth.po';
 import {browser, by, element} from 'protractor';
 import {Urls} from '../../urls';
 import {goToUrl, isUrl, waitForUrlToBe} from '../../common';
+import {async} from "q";
 
 /* https://github.com/angular/protractor/blob/master/docs/toc.md */
 
@@ -13,7 +14,6 @@ describe('The Sign Up page', () => {
     browser.manage().deleteAllCookies();
     await goToUrl(Urls.register);
   });
-
   it('should check that all view elements are present', () => {
     expect(registerPage.emailInput.isPresent()).toBeTruthy();
     expect(registerPage.passwordInput.isPresent()).toBeTruthy();
@@ -26,13 +26,35 @@ describe('The Sign Up page', () => {
     await waitForUrlToBe(Urls.login);
     expect(isUrl(Urls.login)).toBeTruthy();
   });
+
+  afterAll(async () => {
+    await goToUrl(Urls.login);
+    await new LoginPage().userLogin(user.email, user.password);
+    await waitForUrlToBe(Urls.index);
+    await browser.get(Urls.deleteUser);
+    await waitForUrlToBe(Urls.login);
+  })
 });
 
 describe('The login page', () => {
   const loginPage = new LoginPage();
-
+  beforeAll(async () => {
+    await goToUrl(Urls.register);
+    const registerPage = new RegisterPage();
+    await registerPage.createUser(user.email, user.password)
+  });
   beforeEach(async () => {
+    browser.manage().deleteAllCookies();
     await goToUrl(Urls.login);
+  });
+
+  afterAll(async() => {
+    browser.manage().deleteAllCookies();
+    await goToUrl(Urls.login);
+    await loginPage.userLogin(user.email, user.password);
+    await waitForUrlToBe(Urls.index);
+    await browser.get(Urls.deleteUser);
+    await waitForUrlToBe(Urls.login)
   });
 
   it('should contain login fields and submit button', () => {
@@ -45,10 +67,10 @@ describe('The login page', () => {
   it('should navigate to the sign up page when sign up button is clicked', async () => {
     await loginPage.registerBtn.click();
     await waitForUrlToBe(Urls.register);
-    await expect(isUrl(Urls.register)).toBeTruthy();
+    expect(isUrl(Urls.register)).toBeTruthy();
   });
 
-  it('should not log user in as password is wrong', async () => {
+  it('should not log user in when password is wrong', async () => {
     await loginPage.userLogin(user.email, JSON.parse(JSON.stringify(user.password)).password+'test');
     expect(isUrl(Urls.login)).toBeTruthy();
   });

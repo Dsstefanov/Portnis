@@ -11,31 +11,31 @@ angular.module('portfolio.homepage.personality', [
         controller: 'PersonalityController'
       });
     }])
-
     .controller('PersonalityController', [
       '$scope',
+      '$location',
       'getUser',
       'isUsernameUnique',
       'deleteCachedUser',
       'updateUser',
       'toastService',
       'constants',
-      function ($scope, getUser, isUsernameUnique, deleteCachedUser, updateUser,
+      function ($scope, $location, getUser, isUsernameUnique, deleteCachedUser, updateUser,
                 toastService, constants) {
-      let user;
-          getUser.getUserById()
-              .then(data => {
-                user = data;
-                $scope.user = user;
-              });
+        let user;
+        getUser.getUserById()
+            .then(data => {
+              user = data;
+              $scope.user = user;
+            });
         $scope.submit = () => {
           updateUser.updateUser(user)
               .then((msg) => {
-                console.log(msg)
                 toastService.showToast(msg, null, constants.TOAST_SUCCESS.delay, constants.TOAST_SUCCESS.position)
                 deleteCachedUser.deleteCachedUser()
                     .then(() => {
                       getUser.getUserById();
+                      $location.path('/')
                     });
               });
         };
@@ -79,7 +79,6 @@ let checkUsernameUnique = (currentUsername, isUsernameUnique) => {
 
       isUsernameUnique.isUsernameUnique($input.val())
           .then(data => {
-            console.log(data);
             preloader.removeClass('active');
             if (data === true) {
               //user exists
