@@ -1,7 +1,7 @@
 angular.module('portfolio')
     .config(['$routeProvider', function ($routeProvider) {
       $routeProvider.when('/users/delete', {
-        templateUrl: 'authorized-routes/homepage/homepage.html',
+        templateUrl: './app/authorized-routes/homepage/homepage.html',
         controller: 'DeleteUserController'
       });
     }])
@@ -33,7 +33,7 @@ angular.module('portfolio')
         //TODO REMOVE HARDCODE LATER
         userFactory.deleteUser({password: 'testpassword'})
             .then(res => {
-              if(res.errors){
+              if (res.errors) {
                 toastService.showToast(res.errors.error.msg)
                 return;
               }

@@ -7,7 +7,7 @@ angular.module('portfolio.homepage.personality', [
 ])
     .config(['$routeProvider', function ($routeProvider) {
       $routeProvider.when('/personality', {
-        templateUrl: 'authorized-routes/personality/personality.html',
+        templateUrl: './app/authorized-routes/personality/personality.html',
         controller: 'PersonalityController'
       });
     }])

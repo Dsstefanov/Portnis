@@ -13,7 +13,7 @@
     "update-deps": "npm update",
     "postupdate-deps": "bower update",
     "prestart": "npm install",
-    "start": "http-server -a localhost -p 8000 -c-1 ./app",
+    "start": "http-server -a localhost -p 8000 -c-1 ./",
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
     "test-single-run": "karma start karma.conf.js --single-run",
@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@types/jasmine": "^2.8.6",
+    "angular-auth0": "^3.0.0",
     "angular-cookies": "^1.6.9",
     "gulp": "^3.9.1",
     "jasmine": "^3.1.0",

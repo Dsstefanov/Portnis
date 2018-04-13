@@ -14,17 +14,40 @@ angular.module('portfolio', [
   'portfolio.get-user',
   'portfolio.delete-cached-user',
   'portfolio.home',//containing /:username so it must be last
+  'auth0.auth0'
 ])
-    .config(['$locationProvider',
+    .config([
+      '$locationProvider',
       '$routeProvider',
       '$httpProvider',
-      function ($locationProvider, $routeProvider, $httpProvider) {
+      'angularAuth0Provider',
+      function ($locationProvider, $routeProvider, $httpProvider, angularAuth0Provider) {
         'use strict';
 
         $locationProvider.hashPrefix('');
 
         //in case route was not found
-        $routeProvider.when('deleteUser', ($http, SERVER) => {$http.get(`${SERVER}/users/delete`)})
+        $routeProvider.when('deleteUser', ($http, SERVER) => {
+          $http.get(`${SERVER}/users/delete`)
+        })
+
+        $routeProvider.when('callback', [
+          '$location',
+          function ($location) {
+            $location.path('/');
+          }])
+
+        // Initialization for the angular-auth0 library
+        /*angularAuth0Provider.init({
+          clientID: 'B7ilHiOuHxh6OLPsiev6TE611v75ry4T',
+          domain: 'dsstefanov.eu.auth0.com',
+          responseType: 'token id_token',
+          audience: 'https://dsstefanov.eu.auth0.com/userinfo',
+          redirectUri: 'http://localhost:3000/callback',
+          scope: 'openid'
+        });*/
+
+
         $routeProvider.otherwise({redirectTo: '/'});
 
         $httpProvider.defaults.withCredentials = true;
@@ -49,7 +72,7 @@ angular.module('portfolio', [
         // register listener to watch route changes
         $rootScope.$on("$routeChangeStart", function (event, next) {
           if (next.templateUrl !== undefined) {
-            if (next.templateUrl.startsWith('authorized-routes')) {
+            if (next.templateUrl.startsWith('./app/authorized-routes')) {
               // route is for authorized users
               // !== false, we expect either false or a promise (not true)
               if (authorization.isUserAuthorized() !== false) {
@@ -62,7 +85,7 @@ angular.module('portfolio', [
               } else {
                 $location.path('/login');
               }
-            } else if (next.templateUrl === 'components/auth/index.html') {
+            } else if (next.templateUrl === './app/auth/index.html') {
               //route is either login or register
               if (authorization.isUserAuthorized() !== false) {
                 authorization.isUserAuthorized().then(response => {
@@ -75,8 +98,9 @@ angular.module('portfolio', [
           }
         });
       }])
-    .constant('SERVER', 'http://localhost:3000')
+    .constant('SERVER', 'http://localhost:3000/v2')
     .constant('PATHTOIMAGES', './common/images/')
+    .constant('BASE', './app/')
     .factory('toastService', [
       '$mdToast',
       'constants',

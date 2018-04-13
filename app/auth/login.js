@@ -2,17 +2,17 @@
 
 angular.module('portfolio.auth', ['ngRoute', 'ngCookies', 'portfolio.authorization'])
 
-    .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/login', {
-            templateUrl: 'auth/index.html',
-            controller: 'LoginController'
-        });
+    .config(['$routeProvider', function ($routeProvider) {
+      $routeProvider.when('/login', {
+        templateUrl: './app/auth/index.html',
+        controller: 'LoginController'
+      });
     }])
 
     .controller('LoginController', [
-        '$scope',
-        function($scope) {
+      '$scope',
+      function ($scope) {
         $scope.login = true;
-        $scope.email='';
+        $scope.email = '';
         $scope.password = '';
-    }]);
+      }]);

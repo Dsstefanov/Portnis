@@ -5,7 +5,8 @@ angular.module('portfolio.auth')
       'registerUser',
       'toastService',
       'constants',
-      function ($location, isEmailUnique, registerUser, toastService, constants) {
+      'BASE',
+      function ($location, isEmailUnique, registerUser, toastService, constants, BASE) {
         "use strict";
         let loginBtn = (scope, element) => {
           const login = element.find('#login-btn');
@@ -24,14 +25,11 @@ angular.module('portfolio.auth')
             formData.password = scope.password;
             registerUser.register(formData)
                 .then(data => {
-                  if (data.success) {
+                  if (angular.isDefined(data) && data.success) {
                     toastService.showToast(`${data.success}`, null,
                         constants.TOAST_SUCCESS.delay, constants.TOAST_SUCCESS.position);
                     $location.path('/login');
-                  } else if (data.errors.error.code === 11000) {
-                    toastService.showToast(`Email ${formData.email} is already in use`);
                   }
-                  else{ console.log(data)}
                 });
           });
         };
@@ -82,7 +80,7 @@ angular.module('portfolio.auth')
         };
         return {
           restrict: 'E',
-          templateUrl: 'auth/register.html',
+          templateUrl: `${BASE}auth/register.html`,
           link: {
             post: function (scope, element) {
               loginBtn(scope, element);
