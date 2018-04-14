@@ -7,7 +7,7 @@ angular.module('portfolio.homepage.personality')
         "use strict";
         return {
           updateUser: (user) => {
-            return $http.post(`${SERVER}/users/id/${user._id}/user`, user)
+            return $http.post(`${SERVER}/users/user/${user._id}`, user)
                 .then(data => {
                   return data.data;
                 })

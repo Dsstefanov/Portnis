@@ -7,6 +7,10 @@ angular.module('portfolio')
       TOAST_SUCCESS: {
         position: 'bottom right'/*'top right'*/,
         delay: 5000
+      },
+      KEYS: {
+        userId: 'userId',
+        auth: 'auth'
       }
 
     });

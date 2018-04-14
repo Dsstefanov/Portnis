@@ -3,6 +3,7 @@ angular.module('portfolio', [
   'ngRoute',
   'ngCookies',
   'ngMaterial',
+  'angular-md5',
   'portfolio.authorization',
   'portfolio.auth',
   'portfolio.footer',
@@ -14,17 +15,24 @@ angular.module('portfolio', [
   'portfolio.get-user',
   'portfolio.delete-cached-user',
   'portfolio.home',//containing /:username so it must be last
-  'auth0.auth0'
+  'auth0.auth0',
+  'LocalStorageModule',
 ])
     .config([
       '$locationProvider',
       '$routeProvider',
       '$httpProvider',
-      'angularAuth0Provider',
-      function ($locationProvider, $routeProvider, $httpProvider, angularAuth0Provider) {
+      /*'angularAuth0Provider',*/
+      'localStorageServiceProvider',
+      function ($locationProvider, $routeProvider, $httpProvider/*, angularAuth0Provider*/,
+                localStorageServiceProvider) {
         'use strict';
 
         $locationProvider.hashPrefix('');
+
+        localStorageServiceProvider
+          .setPrefix('yourAppName')
+          .setDefaultToCookie(false);
 
         //in case route was not found
         $routeProvider.when('deleteUser', ($http, SERVER) => {
@@ -75,8 +83,9 @@ angular.module('portfolio', [
             if (next.templateUrl.startsWith('./app/authorized-routes')) {
               // route is for authorized users
               // !== false, we expect either false or a promise (not true)
-              if (authorization.isUserAuthorized() !== false) {
-                authorization.isUserAuthorized()
+              let authorize = authorization.isUserAuthorized();
+              if (authorize !== false) {
+                authorize
                     .then(response => {
                       if (response === false) {
                         $location.path('/login');
@@ -87,8 +96,9 @@ angular.module('portfolio', [
               }
             } else if (next.templateUrl === './app/auth/index.html') {
               //route is either login or register
-              if (authorization.isUserAuthorized() !== false) {
-                authorization.isUserAuthorized().then(response => {
+              let authorize = authorization.isUserAuthorized();
+              if (authorize !== false) {
+                authorize.then(response => {
                   if (response === true) {
                     $location.path('/');
                   }
