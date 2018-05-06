@@ -5,6 +5,7 @@ export class Urls {
   public static register = `${browser.baseUrl}/#/register`;
   public static index = `${browser.baseUrl}/#/`;
   public static personality = `${browser.baseUrl}/#/personality`;
+  public static medias = `${browser.baseUrl}/#/medias`;
   public static deleteUser = `${browser.baseUrl}/#/users/delete`;
 
   public static aboutPage(username :string){

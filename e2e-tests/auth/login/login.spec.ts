@@ -9,9 +9,8 @@ import {async} from "q";
 
 describe('The Sign Up page', () => {
   const registerPage = new RegisterPage();
-
+  const loginPage = new LoginPage();
   beforeEach(async () => {
-    browser.manage().deleteAllCookies();
     await goToUrl(Urls.register);
   });
   it('should check that all view elements are present', () => {
@@ -21,6 +20,12 @@ describe('The Sign Up page', () => {
     expect(registerPage.loginBtn.isPresent()).toBeTruthy();
   });
 
+  it('should navigate to the login page when sign in button is clicked', async () => {
+    await registerPage.loginBtn.click();
+    await waitForUrlToBe(Urls.login);
+    expect(isUrl(Urls.login)).toBeTruthy();
+  });
+
   it('should create a user and redirected to the login page', async () => {
     await registerPage.createUser(user.email, user.password);
     await waitForUrlToBe(Urls.login);
@@ -28,8 +33,7 @@ describe('The Sign Up page', () => {
   });
 
   afterAll(async () => {
-    await goToUrl(Urls.login);
-    await new LoginPage().userLogin(user.email, user.password);
+    await loginPage.userLogin(user.email, user.password);
     await waitForUrlToBe(Urls.index);
     await browser.get(Urls.deleteUser);
     await waitForUrlToBe(Urls.login);
@@ -49,10 +53,6 @@ describe('The login page', () => {
   });
 
   afterAll(async() => {
-    browser.manage().deleteAllCookies();
-    await goToUrl(Urls.login);
-    await loginPage.userLogin(user.email, user.password);
-    await waitForUrlToBe(Urls.index);
     await browser.get(Urls.deleteUser);
     await waitForUrlToBe(Urls.login)
   });
@@ -77,7 +77,6 @@ describe('The login page', () => {
 
   it('should log the user in and redirect to the index page', async () => {
     await loginPage.userLogin(user.email, user.password);
-
     await waitForUrlToBe(Urls.index);
     expect(isUrl(Urls.index)).toBeTruthy();
   });

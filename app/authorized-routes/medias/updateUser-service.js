@@ -1,5 +1,5 @@
 angular.module('portfolio.homepage.medias')
-	.factory('updateUser', [
+	.factory('updateUserMedias', [
 		'$http',
 		'SERVER',
 		'toastService',

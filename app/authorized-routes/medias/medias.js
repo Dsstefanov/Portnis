@@ -16,23 +16,22 @@ angular.module('portfolio.homepage.medias', [
 		'$location',
 		'getUser',
 		'deleteCachedUser',
-		'updateUser',
+		'updateUserMedias',
 		'toastService',
 		'constants',
-		function($scope, $location, getUser, deleteCachedUser, updateUser,
+		function($scope, $location, getUser, deleteCachedUser, updateUserMedias,
 		         toastService, constants) {
 			let user;
 			getUser.getUserById()
 				.then(data => {
 					user = data;
-					console.log(user)
 					if(angular.isUndefined(user.socialMedias)){
 						user.socialMedias = {};
 					}
 					$scope.user = user;
 				});
 			$scope.submit = () => {
-				updateUser.updateUser(user.socialMedias)
+				updateUserMedias.updateUser(user.socialMedias)
 					.then((msg) => {
 						toastService.showToast(msg, null, constants.TOAST_SUCCESS.delay, constants.TOAST_SUCCESS.position)
 						deleteCachedUser.deleteCachedUser()

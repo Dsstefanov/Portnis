@@ -6,9 +6,11 @@ import {Homepage} from "./homepage.po";
 import {LoginPage, RegisterPage} from "../auth/login/auth.po";
 import {HomepageAuthorized} from "../authorized-routes/homepage/homepage.po";
 import {browser} from "protractor";
+import {SocialMediasPage} from "../authorized-routes/medias/medias.po";
 describe('The Home page', () => {
 
   const personalityPage = new PersonalityPage();
+  const socialMediasPage = new SocialMediasPage();
   const homepage = new Homepage();
   const homepageAuthorized = new HomepageAuthorized();
   const loginPage = new LoginPage();
@@ -23,13 +25,14 @@ describe('The Home page', () => {
     homepageAuthorized.personalityBtn.click();
     await waitForUrlToBe(Urls.personality);
     await personalityPage.fillForm();
+    await waitForUrlToBe(Urls.index);
+    homepageAuthorized.socialMediasBtn.click();
+    await waitForUrlToBe(Urls.medias);
+    await socialMediasPage.fillForm(user.linkedIn, user.github);
+    await waitForUrlToBe(Urls.index);
   });
 
   afterAll(async () => {
-    browser.manage().deleteAllCookies();
-    await goToUrl(Urls.login);
-    await loginPage.userLogin(getSimpleUser().email, getSimpleUser().password);
-    await waitForUrlToBe(Urls.index);
     await browser.get(Urls.deleteUser);
     await waitForUrlToBe(Urls.login)
   });
@@ -38,6 +41,8 @@ describe('The Home page', () => {
     await goToUrl(Urls.userHomepage(personalityPage.formValues.username));
     expect(homepage.nameText.isPresent()).toBeTruthy();
     expect(homepage.professionText.isPresent()).toBeTruthy();
+    expect(homepage.githubBtn.isPresent()).toBeTruthy();
+    expect(homepage.linkedInBtn.isPresent()).toBeTruthy();
   });
 
   it('should check that text boxes values are correct', async() => {
@@ -45,10 +50,14 @@ describe('The Home page', () => {
 
     expect(await homepage.nameText.getText()).toBe(await personalityPage.formValues.name);
     expect(await homepage.professionText.getText()).toBe(await personalityPage.formValues.profession);
+    expect(await homepage.linkedInBtn.getAttribute('href')).toMatch(user.linkedIn);
+    expect(await homepage.githubBtn.getAttribute('href')).toMatch(user.github);
   });
 });
 
 const user = {
   email: 'pesho@gmail.com',
-  password: 'testpassword'
+  password: 'testpassword',
+  github: 'https://github.com/Dsstefanov',
+  linkedIn: 'https://www.linkedin.com/in/dimitar-stefanov-0274b5125'
 };

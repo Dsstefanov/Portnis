@@ -1,9 +1,9 @@
 import {LoginPage, RegisterPage} from "../../auth/login/auth.po";
-import {PersonalityPage} from "./personality.po";
 import {HomepageAuthorized} from "../homepage/homepage.po";
 import {goToUrl, isUrl, waitForUrlToBe} from "../../common";
 import {Urls} from "../../urls";
 import {browser} from "protractor";
+import {SocialMediasPage} from "./medias.po";
 
 describe('The Personality page', () => {
   const user = {
@@ -12,10 +12,11 @@ describe('The Personality page', () => {
   };
   const registerPage = new RegisterPage();
   const loginPage = new LoginPage();
-  const personalityPage = new PersonalityPage();
+  const mediasPage = new SocialMediasPage();
   const homepageAuthorized = new HomepageAuthorized();
 
   beforeAll(async () => {
+    await browser.manage().deleteAllCookies();
     await goToUrl(Urls.register);
     await registerPage.createUser(user.email, user.password);
     await waitForUrlToBe(Urls.login);
@@ -30,22 +31,22 @@ describe('The Personality page', () => {
 
   afterAll(async () => {
     await browser.get(Urls.deleteUser);
-    await waitForUrlToBe(Urls.login)
+    await waitForUrlToBe(Urls.login);
   });
 
   it('should check that all view elements are present', async() => {
-    homepageAuthorized.personalityBtn.click();
-    await waitForUrlToBe(Urls.personality);
-    expect(personalityPage.nameInput.isPresent()).toBeTruthy();
-    expect(personalityPage.usernameInput.isPresent()).toBeTruthy();
-    expect(personalityPage.professionInput.isPresent()).toBeTruthy();
-    expect(personalityPage.saveBtn.isPresent()).toBeTruthy();
+    homepageAuthorized.socialMediasBtn.click();
+    await waitForUrlToBe(Urls.medias);
+    expect(mediasPage.facebookInput.isPresent()).toBeTruthy();
+    expect(mediasPage.linkedInInput.isPresent()).toBeTruthy();
+    expect(mediasPage.githubInput.isPresent()).toBeTruthy();
+    expect(mediasPage.saveBtn.isPresent()).toBeTruthy();
   });
 
   it('should save the fields', async () => {
-    homepageAuthorized.personalityBtn.click();
-    await waitForUrlToBe(Urls.personality);
-    await personalityPage.fillForm();
+    homepageAuthorized.socialMediasBtn.click();
+    await waitForUrlToBe(Urls.medias);
+    await mediasPage.fillForm();
     expect(isUrl(Urls.index)).toBeTruthy();
   });
 });
