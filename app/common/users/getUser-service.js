@@ -17,8 +17,7 @@ angular.module('portfolio.get-user', ['ngCookies'])
             .then(data => {
               return data.data;
             })
-            .catch((err) => {
-              console.log(err)
+            .catch(() => {
               toastService.showToast('Internal Server error, please try again later');
             })
         },

@@ -1,0 +1,61 @@
+<navbar></navbar>
+<div class="padding-top-45"></div>
+<div class="row" ng-controller="MediaController">
+    <div class="col m10 offset-m1 ">
+        <div class="row">
+            <div class="col m8 s12">
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="name" ng-model="user.socialMedias.facebook" type="text" class="validate">
+                                <label for="name">Link to your facebook account</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="username" ng-model="user.socialMedias.linkedIn" type="text" class="validate">
+                                <label for="username" id="username-label">Link to your linkedIn account</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="profession" ng-model="user.socialMedias.github" type="text" class="validate">
+                                <label for="profession">Link to your github account</label>
+                            </div>
+                            <a href="" id="save-btn" class="default-btn purple-btn bold" ng-click="submit()">Save</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col m4 info-container">
+                <div class="header container">
+                    <div class="row">
+                        <div class="padding-top-30"></div>
+                        <div data-percent="75" data-animate="true" class="donut animate check">
+                            <div class="percent"><!----> <i class="material-icons">check</i></div>
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 85 85" xml:space="preserve"><circle cx="42.5" cy="42.5" r="38.5" class="st2"></circle> <circle cx="42.5" cy="42.5" r="40" class="st0"></circle> <circle cx="42.5" cy="42.5" r="27.5" class="st1"></circle></svg>
+                        </div>
+                        <span class="bold" style="margin-left: 20px">Your profile is almost done</span>
+                    </div>
+                </div>
+                <div class="row container">
+                    <table class="bordered">
+                        <tbody>
+                        <tr>
+                            <td>Personality</td>
+                            <td>12/16</td>
+                        </tr>
+                        <tr>
+                            <td>Social Medias</td>
+
+                            <td><i class="material-icons icon-success">check</i></td>
+                        </tr>
+                        <tr>
+                            <td>Contact Information</td>
+
+                            <td><i class="material-icons icon-success">check</i></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

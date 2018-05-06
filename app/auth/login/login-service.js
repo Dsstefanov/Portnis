@@ -29,8 +29,7 @@ angular.module('portfolio.auth')
                 .catch(err => {
                   if (err.status === 404) {
                     toastService.showToast('Credentials do not match.');
-                  }
-                  else {
+                  } else {
                     toastService.showToast('Internal Server error, please try again later');
                   }
                 });

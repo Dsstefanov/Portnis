@@ -13,6 +13,7 @@ angular.module('portfolio', [
   'portfolio.homepage.personality',
   'portfolio.contact',
   'portfolio.get-user',
+	'portfolio.homepage.medias',
   'portfolio.delete-cached-user',
   'portfolio.home',//containing /:username so it must be last
   'auth0.auth0',
