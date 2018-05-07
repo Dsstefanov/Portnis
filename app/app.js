@@ -14,6 +14,7 @@ angular.module('portfolio', [
   'portfolio.contact',
   'portfolio.get-user',
 	'portfolio.homepage.medias',
+	'portfolio.homepage.contact',
   'portfolio.delete-cached-user',
   'portfolio.home',//containing /:username so it must be last
   'auth0.auth0',

@@ -14,18 +14,10 @@ angular.module('portfolio.home', ['ngRoute', 'portfolio.get-user'])
       'getUser',
       'SERVER',
       'PATHTOIMAGES',
-      'toastService',
-      function ($scope, getUser, SERVER, PATHTOIMAGES, toastService) {
+      function ($scope, getUser, SERVER, PATHTOIMAGES) {
         $scope.PATHTOIMAGES = PATHTOIMAGES;
         getUser.getUser()
             .then(responseUser => {
-              $scope.user = responseUser;
-            }).catch(error => {
-          if (error.status === -1) {
-            toastService.showToast(`${error.config.url} is not available`)
-          } else {
-            toastService.showToast(`Internal server error`)
-          }
-
-        });
+	            $scope.user = responseUser;
+            })
       }]);

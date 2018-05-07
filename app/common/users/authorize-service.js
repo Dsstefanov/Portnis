@@ -23,7 +23,6 @@ angular.module('portfolio.authorization', ['ngCookies'])
                 return data.data;
               })
               .catch((err) => {
-                console.log(err)
                 $cookies.remove(md5.createHash(constants.KEYS.auth));
                 $cookies.remove(md5.createHash(constants.KEYS.userId));
                   if (err.status === 401 || err.status === 400) {

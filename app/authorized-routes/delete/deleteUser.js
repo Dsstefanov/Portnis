@@ -42,7 +42,6 @@ angular.module('portfolio')
           if(angular.isUndefined(res)){
             return;
           }
-          console.log(res)
           toastService.showToast(res, null, constants.TOAST_SUCCESS.delay, constants.TOAST_SUCCESS.position);
           $location.path('/login')
         })

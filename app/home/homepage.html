@@ -3,76 +3,78 @@
 </div>
 
 <div ng-hide="error">
-    <navbar> </navbar>
-    <div class="" style="background-color: #fafafa"> <!--coloring block-->
-        <div class="row">
-            <div class="col s12 m12">
-                <div class="center">
-                    <h3 class="bold secondary-color">{{user.name}}</h3>
-                </div>
-            </div>
-
-            <div class="col s12 m12">
-                <div class="center">
-                    <div class="header-text bold secondary-color">{{user.profession}}</div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12 m12">
-                <div class="center">
-                    <ul class="list-inline intro-social-buttons">
-                        <li>
-                            <a id="linkedIn-btn" ng-href="{{user.socialMedias.linkedIn}}" target="_blank"
-                               class="social-media"><span class="network-name">LinkedIn</span></a>
-                        </li>
-                        <li>
-                            <a id="github-btn" ng-href="{{user.socialMedias.github}}" target="_blank"
-                               class="social-media .social-icon"><span class="network-name">GitHub</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row"></div>
-    </div>
-    <div class="container">
-        <!--body-->
-        <div class="row padding-top-45">
-            <div class="col m4">
-                <div class="row">
-                    <div class="col m10 offset-m1">
-                        <img src="{{PATHTOIMAGES}}{{user.profileImage}}" alt="" class="image responsive-img">
+    <navbar></navbar>
+    <div ng-controller="HomeController">
+        <div class="" style="background-color: #fafafa"> <!--coloring block-->
+            <div class="row">
+                <div class="col s12 m12">
+                    <div class="center">
+                        <h3 class="bold secondary-color">{{user.name}}</h3>
                     </div>
                 </div>
-                <div class="row padding-top-45">
-                    {{user.personalText}}
+
+                <div class="col s12 m12">
+                    <div class="center">
+                        <div class="header-text bold secondary-color">{{user.profession}}</div>
+                    </div>
                 </div>
             </div>
-            <div class="col m7 offset-m1">
-                <div class="center">
-                    <div class="header-text bold secondary-color">Experience</div>
+            <div class="row">
+                <div class="col s12 m12">
+                    <div class="center">
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a id="linkedIn-btn" ng-href="{{user.socialMedias.linkedIn}}" target="_blank"
+                                   class="social-media"><span class="network-name">LinkedIn</span></a>
+                            </li>
+                            <li>
+                                <a id="github-btn" ng-href="{{user.socialMedias.github}}" target="_blank"
+                                   class="social-media .social-icon"><span class="network-name">GitHub</span></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <!--construction for work experience-->
-                <div class="row padding-top-30"></div>
+            </div>
+            <div class="row"></div>
+        </div>
+        <div class="container">
+            <!--body-->
+            <div class="row padding-top-45">
+                <div class="col m4">
+                    <div class="row">
+                        <div class="col m10 offset-m1">
+                            <img src="{{PATHTOIMAGES}}{{user.profileImage}}" alt="" class="image responsive-img">
+                        </div>
+                    </div>
+                    <div class="row padding-top-45">
+                        {{user.personalText}}
+                    </div>
+                </div>
+                <div class="col m7 offset-m1">
+                    <div class="center">
+                        <div class="header-text bold secondary-color">Experience</div>
+                    </div>
+                    <!--construction for work experience-->
+                    <div class="row padding-top-30"></div>
 
-                <div ng-repeat="project in user.projects">
-                    <project project="project"></project>
+                    <div ng-repeat="project in user.projects">
+                        <project project="project"></project>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    $( document ).ready(setTimeout(() => {
-        let projectSections = $('.project-section-home');
-        for (let projectSection of projectSections){
-            $(projectSection).on('click', () => {
-                let githubLink = projectSection.attributes.getNamedItem('github-link').nodeValue
-                if(githubLink !== ''){
-                    open(githubLink)
-                }
-            })
-        }
-    }, 150));
+	$(document).ready(setTimeout(() => {
+		let projectSections = $('.project-section-home');
+		for (let projectSection of projectSections) {
+			$(projectSection).on('click', () => {
+				let githubLink = projectSection.attributes.getNamedItem('github-link').nodeValue
+				if (githubLink !== '') {
+					open(githubLink)
+				}
+			})
+		}
+	}, 150));
 </script>
