@@ -1,0 +1,126 @@
+<navbar></navbar>
+<div class="padding-top-45"></div>
+<div class="row" ng-controller="ProjectController">
+    <div class="col m10 offset-m1 ">
+        <div class="row">
+            <div class="col m8 s12">
+                <div class="row">
+                    <form class="col s12" name="projectForm">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input ng-required="true" id="projectNameInput" ng-model="project.title" type="text"
+                                       class="validate">
+                                <label for="projectNameInput">Project Name*</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <textarea class="materialize-textarea" id="projectBuildingReason"
+                                          ng-model="project.buildingReason"></textarea>
+                                <label for="projectBuildingReason">Why did you build that project*</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <textarea class="materialize-textarea" id="projectDescription"
+                                          ng-model="project.description"></textarea>
+                                <label for="projectDescription">Explain what is the project about</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input ng-required="true" id="webLink" ng-model="project.webLink" type="text"
+                                       class="validate">
+                                <label for="webLink">Link to the web application (leave empty if there is no
+                                    such)</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input ng-required="true" id="githubLink" ng-model="project.githubLink" type="text"
+                                       class="validate">
+                                <label for="githubLink">Link to the github of application</label>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s8">
+                                    <input name="technology" id="technology" ng-model="project.technology" type="text"
+                                           class="novalidate">
+                                    <label for="technology">A technology that you used for building the project</label>
+                                </div>
+                                <div class="s4">
+                                    <button ng-disabled="project.technology.length === 0 || !project.technology"
+                                            id="add-btn"
+                                            class="default-btn purple-btn bold margin-top-20"
+                                            ng-click="addTechnology()">Add
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row"
+                                 ng-show="project.technologies.length !== 0 && project.technologies">
+                                <span>Current Technologies: </span>
+                                <div ng-repeat="technology in project.technologies track by $index">
+                                    <button class="default-btn purple-btn bold col"
+                                            ng-click="removeTechnology($index , project.technologies)">
+                                        {{technology}}
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="file-field input-field">
+                                <div class="btn">
+                                    <span>File</span>
+                                    <input type="file"
+                                           name="file"
+                                           multiple ng-simple-upload
+                                           web-api-url="/images/upload"
+                                           callback-fn="appendFileToProject"/>
+
+                                </div>
+
+                                <div class="file-path-wrapper">
+                                    <input ng-model="project.image.originalname" class="file-path validate" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button ng-disabled="projectForm.$invalid" id="save-btn"
+                                    class="default-btn purple-btn bold margin-top-20" ng-click="addProject()">Add
+                            </button>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <span>Current Projects: </span>
+                        <div ng-repeat="project in user.projects track by $index">
+                            <button class="default-btn purple-btn bold col" ng-click="removeProject($index)">
+                                {{project.title}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col m4 info-container">
+                <div class="header container">
+                    <div class="row">
+                        <div class="padding-top-15"></div>
+                        <div data-percent="75" data-animate="true" class="donut animate check">
+                            <div class="percent"><!----> <i class="material-icons">check</i></div>
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 85 85" xml:space="preserve"><circle cx="42.5" cy="42.5" r="38.5" class="st2"></circle> <circle cx="42.5" cy="42.5" r="40" class="st0"></circle> <circle cx="42.5" cy="42.5" r="27.5" class="st1"></circle></svg>
+                        </div>
+                        <span class="bold" style="margin-left: 20px">Your profile is almost done</span>
+                    </div>
+                </div>
+                <div class="row container">
+                    <table class="bordered">
+                        <tbody>
+                        <tr>
+                            <td>Personality</td>
+                            <td>12/16</td>
+                        </tr>
+                        <tr>
+                            <td>Social Medias</td>
+
+                            <td><i class="material-icons icon-success">check</i></td>
+                        </tr>
+                        <tr>
+                            <td>Contact Information</td>
+
+                            <td><i class="material-icons icon-success">check</i></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
