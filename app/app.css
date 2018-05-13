@@ -82,8 +82,17 @@ hr{
     padding-top: 15px;
     cursor: pointer;
 }
-.padding-top-30{
+.padding-top-15{
     padding-top: 15px;
+}
+.margin-top-20{
+    margin-top: 20px;
+}
+.default-btn.purple-btn:disabled{
+    background-color: #ccc;
+}
+button{
+    border: none;
 }
 .list-inline {
     padding-left: 0;

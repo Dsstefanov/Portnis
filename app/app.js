@@ -15,9 +15,11 @@ angular.module('portfolio', [
   'portfolio.get-user',
 	'portfolio.homepage.medias',
 	'portfolio.homepage.contact',
+	'portfolio.homepage.projects',
   'portfolio.delete-cached-user',
+  'ngSimpleUpload',
   'portfolio.home',//containing /:username so it must be last
-  'auth0.auth0',
+  /*'auth0.auth0',*/
   'LocalStorageModule',
 ])
     .config([

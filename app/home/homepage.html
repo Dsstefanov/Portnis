@@ -55,7 +55,7 @@
                         <div class="header-text bold secondary-color">Experience</div>
                     </div>
                     <!--construction for work experience-->
-                    <div class="row padding-top-30"></div>
+                    <div class="row padding-top-15"></div>
 
                     <div ng-repeat="project in user.projects">
                         <project project="project"></project>
@@ -73,8 +73,8 @@
 				let githubLink = projectSection.attributes.getNamedItem('github-link').nodeValue
 				if (githubLink !== '') {
 					open(githubLink)
-				}
+                }
 			})
 		}
-	}, 150));
+	}, 1500));
 </script>
